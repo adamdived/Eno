@@ -1,14 +1,11 @@
 Eno
 
 Measurement tool for Unity
-
 Released under GNU GPL v3.0
-
 Developed by Linkage Games
-
 Developed for u/miraoister
 
-
+Fixed in 2024 for Unity 2022+ / Unity 6
 
 Using Eno:
 
