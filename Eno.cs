@@ -101,11 +101,12 @@ public class Eno : EditorWindow
             Handles.SphereHandleCap(42, first, Quaternion.identity, 0.05f, EventType.Repaint);
             Ray mouseRay = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
             RaycastHit hit;
+
             if (Physics.Raycast(mouseRay, out hit, 100f))
             {
-
-                Handles.DrawLine(first, hit.point);
-                Handles.SphereHandleCap(42, hit.point, Quaternion.identity, 0.05f, EventType.Repaint);
+                Handles.color = Color.yellow;
+                Handles.DrawLine(first, hit.point, 6f);
+                Handles.SphereHandleCap(42, hit.point, Quaternion.identity, 0.1f, EventType.Repaint);
             }
             HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
         }
@@ -113,9 +114,15 @@ public class Eno : EditorWindow
         {
             CheckCancel();
             HandleUtility.Repaint();
-            Handles.DrawLine(first, second);
-            Handles.SphereHandleCap(42, first, Quaternion.identity, 0.05f, EventType.Repaint);
-            Handles.SphereHandleCap(42, second, Quaternion.identity, 0.05f, EventType.Repaint);
+            Handles.color = Color.yellow;
+            Handles.DrawLine(first, second, 6f);
+            Handles.SphereHandleCap(42, first, Quaternion.identity, 0.1f, EventType.Repaint);
+            Handles.SphereHandleCap(42, second, Quaternion.identity, 0.1f, EventType.Repaint);
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 24;
+            style.normal.textColor = Color.white;
+            Handles.Label(second + Vector3.up * 0.5f + Vector3.right * 0.5f, Vector3.Distance(first, second).ToString("F3") + (" meters"), style);
+
             if (Event.current != null && (Event.current.button == 0) && Event.current.type.Equals(EventType.MouseDown))
             {
                 Restart();
@@ -135,14 +142,12 @@ public class Eno : EditorWindow
         point = Vector3.zero;
         Event e = Event.current;
 
-
         if (e.button == 0 && e.type.Equals(EventType.MouseDown))
         {
             Ray mouseRay = HandleUtility.GUIPointToWorldRay(e.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(mouseRay, out hit, maxDistance))
             {
-
                 point = hit.point;
                 return true;
             }
