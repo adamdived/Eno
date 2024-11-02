@@ -27,8 +27,8 @@ public class Eno : EditorWindow
     static void Init()
     {
         Eno window = (Eno)EditorWindow.GetWindow(typeof(Eno));
-        window.minSize = new Vector2(215f, 22f);
-        window.maxSize = new Vector2(1000f, 222f);
+        window.minSize = new Vector2(220f, 50f);
+        window.maxSize = new Vector2(220f, 60f);
         window.position = new Rect(window.position.x, window.position.y, 215f, 22f);
         window.titleContent = new GUIContent("Eno Measurement Tool");
     }
