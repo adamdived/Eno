@@ -15,6 +15,7 @@ using UnityEditor;
 
 public class Eno : EditorWindow
 {
+    public float maxDistance = 1000f;
     private enum measurementStates { first, second, showing, none };
     private measurementStates measurementState = measurementStates.none;
     private Vector3 first = Vector3.zero;
@@ -22,13 +23,14 @@ public class Eno : EditorWindow
     private Vector3 second = Vector3.zero;
 
 
-    [MenuItem("Window/Eno")]
+    [MenuItem("Window/Eno Measurement Tool")]
     static void Init()
     {
         Eno window = (Eno)EditorWindow.GetWindow(typeof(Eno));
         window.minSize = new Vector2(215f, 22f);
         window.maxSize = new Vector2(1000f, 222f);
         window.position = new Rect(window.position.x, window.position.y, 215f, 22f);
+        window.titleContent = new GUIContent("Eno Measurement Tool");
     }
     bool test;
     void OnGUI()
@@ -59,6 +61,12 @@ public class Eno : EditorWindow
         {
             Restart();
         }
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+
+        maxDistance = EditorGUILayout.FloatField("Pick Max Distance", maxDistance);
+
         GUILayout.EndHorizontal();
 
     }
@@ -132,7 +140,7 @@ public class Eno : EditorWindow
         {
             Ray mouseRay = HandleUtility.GUIPointToWorldRay(e.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(mouseRay, out hit, 100f))
+            if (Physics.Raycast(mouseRay, out hit, maxDistance))
             {
 
                 point = hit.point;
