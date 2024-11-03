@@ -12,7 +12,8 @@ Fixed in 2024 for Unity 2022+ / Unity 6
 Changes:
 1) Thick yellow line for better readability on screen
 2) Measurements appear on screen
-3) Better window layout
+3) Pick Max Distance settings in the tool window
+4) Better window layout
 
 Using Eno:
 
