@@ -8,6 +8,7 @@ Developed by Linkage Games
 Developed for u/miraoister
 
 Fixed in 2024 for Unity 2022+ / Unity 6
+<br />
 Changes:
 1) Thick yellow line for better readability on screen
 2) Measurements appear on screen
