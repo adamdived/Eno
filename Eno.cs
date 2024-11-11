@@ -8,9 +8,9 @@
 // for Unity 2022+ and Unity 6
 //-------------------------------
 
+#if UNITY_EDITOR
 
 using UnityEngine;
-using System.Collections;
 using UnityEditor;
 
 public class Eno : EditorWindow
@@ -121,7 +121,7 @@ public class Eno : EditorWindow
             GUIStyle style = new GUIStyle();
             style.fontSize = 24;
             style.normal.textColor = Color.white;
-            Handles.Label(second + Vector3.up * 0.5f + Vector3.right * 0.5f, Vector3.Distance(first, second).ToString("F3") + (" meters"), style);
+            Handles.Label(second + Vector3.up * 1f + Vector3.right * 0.25f, Vector3.Distance(first, second).ToString("F3") + (" meters"), style);
 
             if (Event.current != null && (Event.current.button == 0) && Event.current.type.Equals(EventType.MouseDown))
             {
@@ -174,3 +174,5 @@ public class Eno : EditorWindow
         }
     }
 }
+
+#endif
